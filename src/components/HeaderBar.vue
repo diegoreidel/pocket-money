@@ -1,10 +1,12 @@
 <template>
-  <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt />
-      Pocket Money
-    </a>
-  </nav>
+  <b-card-header header-tag="nav">  
+    <b-nav>
+      <b-nav pills>
+        <b-nav-item to="/">Pocket Money</b-nav-item>
+        <b-nav-item to="/accounts">Accounts</b-nav-item>
+      </b-nav>
+    </b-nav>
+  </b-card-header>
 </template>
 
 <script>

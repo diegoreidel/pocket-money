@@ -1,22 +1,18 @@
 <template>
-  <b-container fluid>
-    <ul class="list-group">
-      <li
-        class="list-group-item"
-        v-for="account in accounts"
-        @click="open(account)"
-        :key="account.id"
-        :class="{'active': selectedAccount === account}"
-      >{{account.type}}, {{account.name}}, {{account.balance}}</li>
-    </ul>
+
+  <b-card-body class="text-center">
+
+    <b-list-group>
+      <b-list-group-item v-for="account in accounts" :key="account.id" @click="open(account)" :class="{'active': selectedAccount === account}">
+        {{account.type}}, {{account.name}}, {{account.balance}}
+      </b-list-group-item>
+    </b-list-group>
 
     <div>
       <b-button @click="newAccount" variant="success">New</b-button>
     </div>
-
     <AccountDetails v-if="selectedAccount" :account=selectedAccount /> 
-
-  </b-container>
+  </b-card-body>
 </template>
 
 <script>

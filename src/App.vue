@@ -1,21 +1,17 @@
 <template>
-  <b-container fluid id="app">
-    
-    <HeaderBar />
-    <AccountsList />
-
-  </b-container>
+  <div id="app">
+    <b-card title="Card Title" no-body>
+      <HeaderBar />
+      <router-view/>
+    </b-card>
+  </div>
 </template>
 
 <script>
-import HeaderBar from './components/HeaderBar'
-import AccountsList from './components/AccountsList'
+import HeaderBar from '@/components/HeaderBar'
 
 export default {
-  name: 'app',
-  components: {
-    HeaderBar, AccountsList
-  }
+  components: {HeaderBar}
 }
 </script>
 
