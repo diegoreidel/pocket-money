@@ -1,6 +1,6 @@
 <template>
 
-  <b-card-body class="text-center">
+  <b-card-body>
 
     <b-list-group>
       <b-list-group-item v-for="account in accounts" :key="account.id" @click="open(account)" :class="{'active': selectedAccount === account}">
@@ -8,9 +8,9 @@
       </b-list-group-item>
     </b-list-group>
 
-    <div>
+    <b-card-body>
       <b-button @click="newAccount" variant="success">New</b-button>
-    </div>
+    </b-card-body>
     <AccountDetails v-if="selectedAccount" :account=selectedAccount /> 
   </b-card-body>
 </template>
@@ -18,12 +18,31 @@
 <script>
 
 import AccountDetails from '@/components/AccountDetails'
+import AccountForm from '@/components/AccountForm'
 
 export default {
   name: "AccountsList",
   data() {
     return {
-      accounts: [
+      accounts: [],
+      selectedAccount: undefined
+    };
+  },
+  created() {
+    this.getAccounts();
+  },
+
+  methods: {
+    open(account) {
+      this.selectedAccount = account;
+    },
+
+    newAccount() {
+      this.$router.push('accounts/add');
+    },
+
+    getAccounts() {
+      this.accounts = [
         {
           id: 1,
           name: "Account1",
@@ -64,19 +83,9 @@ export default {
             }
           ]
         }
-      ],
-      selectedAccount: undefined
-    };
-  },
-  methods: {
-    open(account) {
-      this.selectedAccount = account;
-    },
-
-    newAccount() {
-
+      ]
     }
   }, 
-  components: {AccountDetails}
+  components: {AccountDetails, AccountForm}
 };
 </script>

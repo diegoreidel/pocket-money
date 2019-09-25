@@ -1,3 +1,10 @@
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'node_modules/bootstrap-vue/src/index.scss';
 
+
+$margin-size: 5px;
+
+button {
+    margin-left: $margin-size;
+}
+
