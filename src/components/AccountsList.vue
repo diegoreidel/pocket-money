@@ -19,6 +19,7 @@
 
 import AccountDetails from '@/components/AccountDetails'
 import AccountForm from '@/components/AccountForm'
+import {fetchAccounts} from '../services/account.service.js'
 
 export default {
   name: "AccountsList",
@@ -41,51 +42,10 @@ export default {
       this.$router.push('accounts/add');
     },
 
-    getAccounts() {
-      this.accounts = [
-        {
-          id: 1,
-          name: "Account1",
-          type: "Type1",
-          balance: -123.0,
-          entries: [
-            {
-              id: "entry1",
-              description: "Food and beverages",
-              type: "Supermarket",
-              value: -12
-            },
-            {
-              id: "entry2",
-              description: "God of War",
-              type: " Entertainment",
-              value: -40
-            }
-          ]
-        },
-        {
-          id: 2,
-          name: "Account2",
-          type: "Type2",
-          balance: 456.0,
-          entries: [
-            {
-              id: "entry3",
-              description: "Income 1",
-              type: "Income",
-              value: 123
-            },
-            {
-              id: "entry4",
-              description: "Income 2",
-              type: " Entertainment",
-              value: 456
-            }
-          ]
-        }
-      ]
+    async getAccounts() {
+      this.accounts = await fetchAccounts();
     }
   }, 
-  components: {AccountDetails, AccountForm}
+  components: {AccountDetails}
 };
 </script>
