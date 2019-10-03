@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { postAccount } from '@/services/account.service.js'
+
 export default {
     name: 'AccountForm',
     data() {
@@ -34,8 +36,9 @@ export default {
         }
     },
     methods: {
-        save(account) {
+        async save(account) {
             console.log(`Creating account with type = ${account.type}, name = ${account.name} and amount = ${account.amount}`)
+            this.account = await postAccount(account);
         },
         cancel() {
             this.$router.push('/accounts');

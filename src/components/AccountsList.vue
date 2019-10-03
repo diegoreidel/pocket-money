@@ -19,7 +19,7 @@
 
 import AccountDetails from '@/components/AccountDetails'
 import AccountForm from '@/components/AccountForm'
-import {fetchAccounts} from '../services/account.service.js'
+import {fetchAccounts} from '@/services/account.service.js'
 
 export default {
   name: "AccountsList",
