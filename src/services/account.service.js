@@ -1,18 +1,29 @@
 import axios from 'axios'
 
 const fetchAccounts = async function() {
-    const response = await axios.get('http://localhost:8081/accounts');
-    return response.data;
+    return performHTTPGet('http://localhost:8081/accounts');
 }
 
 const fetchAccount = async function(accountId) {
-    const response = await axios.get(`http://localhost:8081/accounts/${accountId}`)
-    return response.data;
+    return performHTTPGet(`http://localhost:8081/accounts/${accountId}`);
 }
 
 const postAccount = async function(account) {
-    const response = await axios.post('http://localhost:8081/accounts')
+    return performHTTPPost('http://localhost:8081/accounts', account);
+}
+
+const fetchAccountTypes = async function() {
+    return performHTTPGet('http://localhost:8081/accounts/types');
+}
+
+const performHTTPGet = async function(url) {
+    const response = await axios.get(url);
     return response.data;
 }
 
-export { fetchAccounts, fetchAccount, postAccount }
+const performHTTPPost = async function(url, data) {
+    const response = await axios.post(url, data);
+    return response.data;
+}
+
+export { fetchAccounts, fetchAccount, postAccount, fetchAccountTypes }
