@@ -19,13 +19,12 @@
 
 import AccountDetails from '@/components/AccountDetails'
 import AccountForm from '@/components/AccountForm'
-import {fetchAccounts} from '@/services/account.service.js'
+import {mapState, mapActions} from 'vuex'
 
 export default {
   name: "AccountsList",
   data() {
     return {
-      accounts: [],
       selectedAccount: undefined
     };
   },
@@ -34,6 +33,7 @@ export default {
   },
 
   methods: {
+    ...mapActions(['getAccountsAction']),
     open(account) {
       this.selectedAccount = account;
     },
@@ -43,9 +43,12 @@ export default {
     },
 
     async getAccounts() {
-      this.accounts = await fetchAccounts();
+      await this.getAccountsAction();
     }
   }, 
-  components: {AccountDetails}
+  components: {AccountDetails},
+  computed: {
+    ...mapState(['accounts'])
+  }
 };
 </script>
