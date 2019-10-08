@@ -1,19 +1,21 @@
 import axios from 'axios'
 
+import { ACCOUNTS_API } from '@/shared/config'
+
 const fetchAccounts = async function() {
-    return performHTTPGet('http://localhost:8081/accounts');
+    return performHTTPGet(`${ACCOUNTS_API}/accounts`);
 }
 
 const fetchAccount = async function(accountId) {
-    return performHTTPGet(`http://localhost:8081/accounts/${accountId}`);
+    return performHTTPGet(`${ACCOUNTS_API}/accounts/${accountId}`);
 }
 
 const postAccount = async function(account) {
-    return performHTTPPost('http://localhost:8081/accounts', account);
+    return performHTTPPost(`${ACCOUNTS_API}/accounts`, account);
 }
 
 const fetchAccountTypes = async function() {
-    return performHTTPGet('http://localhost:8081/accounts/types');
+    return performHTTPGet(`${ACCOUNTS_API}/accounts/types`);
 }
 
 const performHTTPGet = async function(url) {
