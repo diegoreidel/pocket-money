@@ -12,7 +12,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'accounts',
+      name: 'homepage',
       component: AccountsList
     },
     {
@@ -24,6 +24,12 @@ export default new Router({
       path: '/accounts/add',
       name: 'add-accounts',
       component: AccountForm
+    },
+    {
+      path: '/accounts/:id',
+      name: 'account-details',
+      component: AccountForm,
+      props: true
     },
     {
       path: '**',

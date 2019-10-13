@@ -1,1 +1,2 @@
-export const GET_HEROES = 'getAccounts';
+export const GET_ACCOUNTS = 'getAccounts';
+export const GET_ACCOUNT = 'getAccount';

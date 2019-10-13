@@ -13,7 +13,7 @@
                     <b-form-input id="name" type="text" required placeholder="Account Name" v-model="account.name"></b-form-input>
                 </b-form-group>
                 <b-form-group id="balance-group" label="Balance" label-for="balance">
-                    <b-form-input id="balance" type="number" required placeholder="Account Balance" v-model="account.amount"></b-form-input>
+                    <b-form-input id="balance" type="number" required placeholder="Account Balance" v-model="account.balance"></b-form-input>
                 </b-form-group>
             </b-form>
         </b-card>
@@ -27,20 +27,23 @@
 
 <script>
 import { postAccount, fetchAccountTypes } from '@/services/account.service.js'
+import { mapActions, mapState } from 'vuex';
 
 export default {
     name: 'AccountForm',
     data() {
         return {
-            account: {
-                type: '',
-                name: '',
-                amount: 0
-            },
             accountTypes: []
         }
     },
+    props: {
+        id: {
+            type: String,
+            default: () => ""
+        }
+    },
     methods: {
+        ...mapActions(['getAccountAction']),
         async getAccountTypes() {
             this.accountTypes = await fetchAccountTypes();
         },
@@ -51,11 +54,19 @@ export default {
         cancel() {
             this.$router.push('/accounts');
         },
-
+        async tryGettingAccountForEdition() {
+            if(this.id !== "") {
+                await this.getAccountAction(this.id);
+            }
+        }
     },
 
-    created() {
+    async created() {
+        await this.tryGettingAccountForEdition();
         this.getAccountTypes();
+    },
+    computed: {
+        ...mapState(['account'])
     }
 }
 </script>

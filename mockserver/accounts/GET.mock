@@ -6,7 +6,7 @@ Access-Control-Allow-Headers: Content-Type
 [{
     "id": "1",
     "name": "Account1",
-    "type": "Type1",
+    "type": "Savings",
     "balance": "-123.0",
     "entries": [
         {
@@ -26,7 +26,7 @@ Access-Control-Allow-Headers: Content-Type
 {
     "id": "2",
     "name": "Account2",
-    "type": "Type2",
+    "type": "Investments",
     "balance": "456.0",
     "entries": [
         {

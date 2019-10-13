@@ -5,7 +5,7 @@ Access-Control-Allow-Origin: *
 {
     "id": "1",
     "name": "Account1",
-    "type": "Type1",
+    "type": "Savings",
     "balance": "-123.0",
     "entries": [
         {
